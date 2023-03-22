@@ -1,7 +1,7 @@
 <script lang="ts">
     import Card from './Card.svelte';
-
     import { each, element } from "svelte/internal";
+    import { step } from '../store.js';
 
     const champs = [
         { name: 'aatrox', on: true, img: 'https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt570145160dd39dca/5db05fa8347d1c6baa57be25/RiotX_ChampionList_aatrox.jpg?quality=100&width=500' },
@@ -168,13 +168,19 @@
         { name: 'zyra', on: true, img: 'https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt9bc3497cdd04f6d5/5db060229481396d6bdd01c4/RiotX_ChampionList_zyra.jpg?quality=100&width=500' },
     ]
 
-    let currentChampion = 10;
+    let currentChampion: number;
+    step.subscribe( value => {
+        currentChampion = value;
+    })
 
+    const clamp = (val: number, min = 0, max = 1) => Math.max(min, Math.min(max, val));
     function teste(i: number) {
-        currentChampion += i;
+        step.update( n => clamp(n + i, 0, champs.length) );
+        
         let items = document.getElementsByClassName("ScrollItem");
         if (items) {
-            items[currentChampion].scrollIntoView({ inline: 'center' });
+            let el = items[currentChampion];
+            el.scrollIntoView( { behavior: 'smooth', inline: 'center' } )
         }
 
     }
@@ -196,8 +202,8 @@
         { /each }
     </div>
     <div class="buttonList">
-        <button on:click={() => teste(-1)}>PREVIOUS</button>
-        <button on:click={() => teste(1)}>NEXT</button>
+        <button on:click={() => teste(-1)} style="background: #D0A863">PREVIOUS</button>
+        <button on:click={() => teste(1)} style="background: #1AC6E1">NEXT</button>
     </div>
     <h1 class="watermark">IRONMAN</h1>
 </main>
@@ -249,14 +255,10 @@
         width: 100%;
         height: 40vh;
         display: flex;
-        flex-direction: row;
         overflow-x: hidden;
         align-items: center;
-        scroll-behavior: smooth;
         gap: 1em;
         mask-image: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 10%,rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%);
-
-        /* background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 10%, rgba(255, 255, 255, 0) 90%, rgba(255, 255, 255, 1) 100%); */
     }
 
     .ScrollItem {
@@ -282,6 +284,7 @@
     }
 
     button {
+        color: #fff;
         font-family: 'Inter', sans-serif;
         font-weight: 600;
         border: 0;
@@ -296,13 +299,13 @@
     }
 
     .watermark {
-        color: #f4f4f4;
+        color: #f0f0f0;
         position: absolute;
-        text-align: center;
-        top: 30vh;
-        width: 100%;
-        font-size: 32em;
-        overflow: hidden;
         z-index: -10;
+        top: 26vh;
+        font-size: 24vw;
+        width: 100%;
+        text-align: center;
+        overflow: hidden;
     }
 </style>
