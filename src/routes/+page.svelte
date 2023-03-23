@@ -211,7 +211,7 @@
 <style>
     header {
         width: 100%;
-        height: 200px;
+        height: 180px;
         background-color: black;
         background-image: url("/hero-blurred-7572101a2ce5e003b66483b7fe5c5d36.jpg");
         background-size: cover;
@@ -248,7 +248,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 4em;
+        gap: 3em;
     }
 
     #championList {

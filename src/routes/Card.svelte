@@ -24,6 +24,7 @@
         z-index: 1;
         padding: 4%;
 
+        font-size: 0.9em;
         font-family: 'BeaufortforLOL', sans-serif;
         color: #fff;
         text-transform: uppercase;
