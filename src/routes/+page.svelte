@@ -213,7 +213,7 @@
         width: 100%;
         height: 200px;
         background-color: black;
-        background-image: url("src/hero-blurred-7572101a2ce5e003b66483b7fe5c5d36.jpg");
+        background-image: url("hero-blurred-7572101a2ce5e003b66483b7fe5c5d36.jpg");
         background-size: cover;
         background-position: 50%;
         display: flex;
