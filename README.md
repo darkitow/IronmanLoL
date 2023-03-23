@@ -1,38 +1,12 @@
-# create-svelte
+# Ironman Challenge for LoL
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+The Ironman Challenge is designed to test the player's endurance and ability to play a variety of characters. Traditionally played on fighting games, this webapp helps bring the challenge to League of Legends!
 
-## Creating a project
+The exact rules change depending on the game and player preference, so here's a few sugesstions:
+1. Bronze - Win a game with every character in order, independent of any losses inbetween.
+2. Silver - Win a game with every character in order, but any loss means you need to go back to the previous champion, with a checkpoint every new letter reached. 
+3. Gold - Win a game with every character in order, but any loss means you need to go back to the previous champion. Testing not only your ability, but your consistency.
+4. Platinum - Win a game with every character in order, but any loss means you to go back to the first champion of that letter.
+5. Diamond - Win a game with every character in order, but every loss means you go back to the start. ~~(this is pretty much impossible)~~
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+<img src="readme-siteImage.png" alt="Webapp preview" width="640">
